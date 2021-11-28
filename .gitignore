@@ -1,0 +1,11 @@
+*.iml
+.idea/
+*.log
+.gradle/
+out/
+.build_localdev
+build/
+.attach_pid*
+target/
+downloads
+

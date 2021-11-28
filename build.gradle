@@ -1,0 +1,53 @@
+defaultTasks 'clean', 'test'
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'net.serenity-bdd.aggregator'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    ext{
+        serenityVersion = "2.0.70"
+        //serenityGradleVersion = "2.3.13"
+        serenityCucumberVersion = "2.2.6"
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.70")
+    }
+}
+configurations.all {
+    resolutionStrategy {
+        force "io.cucumber:cucumber-core:5.0.0"
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "io.cucumber:cucumber-core:5.0.0"
+    }
+
+}
+dependencies {
+    implementation  group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.0-alpha1'
+    implementation  group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    implementation "net.serenity-bdd:serenity-core:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-junit:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityVersion",
+            "net.serenity-bdd:serenity-screenplay-rest:$rootProject.ext.serenityVersion"
+    implementation group: 'com.microsoft.azure', name: 'adal4j', version: '1.6.5'
+    testImplementation group: 'com.microsoft.azure', name: 'azure-client-authentication', version: '1.7.1'
+    implementation group: 'com.microsoft.sqlserver', name: 'mssql-jdbc', version: '8.2.0.jre8'
+    testImplementation "net.serenity-bdd:serenity-cucumber5:$rootProject.ext.serenityCucumberVersion",
+            "junit:junit:4.12",
+            "org.assertj:assertj-core:3.8.0"
+    implementation group: 'log4j', name: 'log4j', version: '1.2.17'
+
+}
