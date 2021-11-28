@@ -20,5 +20,5 @@ Feature: BlanckFactor Page
     And the user subscribes to newsletter using the email <email>
     Then the user sees the confirmation message
     Examples:
-      | email                       |
-      | blanckfactortest4@gmail.com |
+      | email                        |
+      | blanckfactortest50@gmail.com |
